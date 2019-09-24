@@ -1,0 +1,17 @@
+1. QuoteAnnotatior.
+
+Here are the issues I see with the existing tool:
+
+Passages of quotation aren’t pre-selected (you need to manually select each one) — we could get this from GutenTag or BookNLP (it should also be possible to manually select a passage of quotation, of course)
+It doesn’t seem possible to de-select a span if you select it by accident (there should be a “remove annotation” option in the annotation window)
+The annotation window pops up above the main text, making it hard to enter your annotation if you don’t remember exactly what’s happening underneath (it should appear on the side, probably where the file loading/saving interface currently is)
+Characters need to be entered manually (they should be pre-populated with info from GutenTag)
+It’s not clear how to enter gender or aliases for characters
+
+2. Other features
+
+The simplicity-loving side of me thinks it would be great if we only annotated passages of character dialogue, attributing each to a character (and maintaining a list of characters with the genders and nicknames). But I can of course see the value in recording more. (Would it make sense to maybe only record all this fancy stuff for a certain portion of every text, like a few chapters?) The things we discussed are:
+
+“Mentions” (any reference to a character, outside of quotation or within a quotation, including pronouns, which we would disambiguate by referring the reference to a character from the character list.)
+“Attributing phrases” (phrases like “he said” that include a mention and a speech verb)
+“Direct address” (moments within quotations, like “Now, Mrs. Munt, you’re being rude” that indicate to whom a particular passage of dialogue is addressed)
