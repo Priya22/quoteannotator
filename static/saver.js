@@ -37,18 +37,27 @@ Saver.prototype.load = function(evt) {
   if (files.length != 1) {
     ts.alert("Only the first selected file will be loaded!");
   }
-
-  var textType = /text.*/;
+  var bothType = /text.*/;
+  var textType = /text\/plain/;
+  var xmlType = /text\/xml/;
   var file = files[0];
   var ann = this;
-  if (file.type.match(textType) || file.type.match(/application\/json/)) {
+  if (file.type.match(bothType) || file.type.match(/application\/json/)) {
     var reader = new FileReader();
     if (id == 'loadfiles') {
       reader.onload = function(e) {
         var content = reader.result;
-        var html = convertToHtml(content, ann);
-        $("#annotationarea textarea").val(html);
-        $("#annotate").click();
+        console.log(content)
+        if (file.type.match(xmlType)) {
+            var html = convertToHtml(content, ann);
+            $("#annotationarea textarea").val(html);
+            $("#annotate").click();
+            }
+        else if (file.type.match(textType)) {
+            var html = convertTxtToHtml(content, ann);
+            $("#annotationarea textarea").val(html);
+            $("#annotate").click();
+        }
         ann.updateSpanIds();
         ann.updateConnections();
         ann.enableConnectionClicks();
@@ -216,5 +225,19 @@ function convertToHtml(xml, ann) {
   var inner = convertSingleSpan($text, xmlToHtmlConvert);
   // Need to convert &amp; back into & for some reason
   inner = inner.replace("&amp;", "&");
+  return inner;
+}
+
+function convertTxtToHtml(txt, ann) {
+  console.log('converting...');
+  // var xmlDoc = $.parseXML(xml);
+  console.log(txt);
+  // take care of adding the characters in the doc to the annotator
+  // now we want to load everything for real
+  // $text = $xml.find("text");
+  // var inner = convertSingleSpan($text, xmlToHtmlConvert);
+  var inner = txt
+  // Need to convert &amp; back into & for some reason
+  // inner = inner.replace("&amp;", "&");
   return inner;
 }
