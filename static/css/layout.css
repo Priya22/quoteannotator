@@ -1,0 +1,40 @@
+
+#parent {
+  display: flex;
+  background: blue;
+  flex-wrap: wrap;
+}
+
+#character {
+ flex: 1;
+}
+
+#load {
+ flex: 1;
+}
+
+#annotate-div{
+ flex: 1;
+}
+
+#entitydisplay {
+ flex: 1;
+}
+
+#annotationareacontainer {
+ flex: 2;
+}
+
+.default {
+  display: block;
+  margin: 5px;
+  padding: 2px;
+  background: yellow;
+  min-width: 350px;
+}
+
+.inline {
+  display: inline;
+  flex: 1;
+  background: green;
+}

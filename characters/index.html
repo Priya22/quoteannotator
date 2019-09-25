@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/quotes.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/flex-grid.css">
 
     <script type="text/javascript" src="../static/lib/jquery-2.0.2.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
@@ -35,7 +35,7 @@
   </head>
   <body>
     <h1>A Small Sandbox of Annotation</h1>
-
+   <div id="parent">
     <!-- Modal HTML embedded directly into document -->
     <div id="addoptionmodal" style="display:none;">
       <p> Add an character! </p>
@@ -70,45 +70,67 @@
       <a id="closeedit" href="#" rel="modal:close"></a>
     </div>
 
-    <div>
-      <div>
-        <input id="addcharacter" type="button" value="Add Character" class="btn btn-primary" />
-        <input id="checkconnections" type="button" value="Check Connections" class="btn btn-primary" />
-        <p id="connectionstatus"></p>
-      </div>
-    </div>
 
-    <div id="entitydisplay" class="left bordered">
-      <h3>Character List</h3>
-    </div>
+   <div class="row">
 
-    <div id="annotationareacontainer" class="left bordered">
-      <div id="linenums" class="left">
-      </div>
-      <div id="annotationarea" class="left">
-        <textarea class="lined">
-        </textarea>
-      </div>
-    </div>
-    <div id="tools" class="right">
-      <div>
-        <p>muzny@stanford.edu</p>
-      </div>
-      <div>
-        <input id="annotate" type="button" value="Annotate!" class="btn btn-primary" />
-      </div>
-      <div class="text">
-        <h4>Load and save text files</h4>
-        <div>
+     <div class="column">
+        <div id = "character" class="default">
+            <input id="addcharacter" type="button" value="Add Character" class="inline " />
+            <input id="checkconnections" type="button" value="Check Connections" class="inline" />
+            <p id="connectionstatus"></p>
+
+        </div>
+     </div>
+
+     <div class="column">
+    <div id="load" class="default">
           Load a text file:
-          <input type="file" id="loadfiles" name="files[]" multiple />
+          <input type="file" style="display: inline;" id="loadfiles" name="files[]" multiple />
+    </div>
+
+    </div>
+
+     <div class="column">
+       <div class="default" id="annotate-div">
+            <input id="annotate" type="button" value="Annotate!" class="btn btn-primary" />
+          </div>
+
+     </div>
+
+   </div>
+
+   <div class="row">
+
+    <div class="column">
+      <div id="entitydisplay" class="default">
+        <h3>Character List</h3>
+      </div>
+    </div>
+
+     <div class="double-column">
+        <div id="annotationareacontainer">
+          <div id="linenums">
+          </div>
+          <div id="annotationarea">
+            <textarea class="lined">
+            </textarea>
+          </div>
         </div>
-        <div>
-          Filename: <input id="savefilename" type="text" value="" size="15"></input>
-          <button id="save">Save!</button>
-          <p>Format: "filename" will produce file "filename.xml"</p>
+     </div>
+   </div>
+
+
+   <div class="row">
+
+    <div id="tools" class="default">
+      <div class="inline"><h4 style="display: inline;">Save Annotation: </h4></div>
+        <div class="inline">
+          <input id="savefilename" type="text" placeholder="filename" size="15"></input> <p style="display: inline;">.xml</p>
+          <button id="save" class="inline">Save!</button>
         </div>
       </div>
+
+    </div>
       <!--
       <div class="config">
         <h4>Load and save configuration files</h4>
@@ -123,17 +145,11 @@
         </div>
       </div>
       -->
-      <div>
+     </div>
+      <div class="default">
         <h4><a href="guide.html">Annotation Guidelines</a></h4>
         <p>Here you will find instructions and guidelines!</p>
       </div>
-      <div>
-        <h4> Known Issues </h4>
-        <ul>
-          <li>Funkiness when you resize your window because connections don't resize properly--if this happens, save, then re-load.</li>
-          <li> Funkiness upon reload. To fix this, do a hard reload (shift+command/apple+r). You will lose the text in the text box and cannot save it!</li>
-        </ul>
-      </div>
-    </div>
+
   </body>
 </html>
